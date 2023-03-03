@@ -1,11 +1,10 @@
 const express = require("express");
+const { getItems, getItem } = require("../controllers/file");
 const router = express.Router();
 
 /* TODO GET,POST,DELETE,PUT */
 
-router.get("/file", (req, res) => {
-  const data = ["hola", "mundo"];
-  res.send({ data });
-});
+router.get("/", getItems);
+router.get("/:id", getItem);
 
 module.exports = router;
