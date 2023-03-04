@@ -6,11 +6,7 @@ const FileScheme = new mongoose.Schema(
       type: String,
     },
     mediaId: {
-      type: mongoose.Types.ObjectId,
-    },
-    role: {
-      type: ["user", "admin"],
-      default: "user",
+      type: String,
     },
   },
   {
