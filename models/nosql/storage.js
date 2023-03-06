@@ -10,7 +10,7 @@ const StorageScheme = new mongoose.Schema(
     },
   },
   {
-    timestamps: true /* TODO createAt, updateAt */,
+    timestamps: true,
     versionKey: false,
   }
 );
