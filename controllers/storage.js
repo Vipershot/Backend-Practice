@@ -1,30 +1,36 @@
 const { storageModel } = require("../models/index");
 const cloudinary = require("../utils/cloudinary");
+const { handleHttpError } = require("../utils/handleError");
 const PUBLIC_URL = process.env.PUBLIC_URL;
 
 const getItems = async (req, res) => {
-  const data = await storageModel.find({});
-  res.send({ data });
+  try {
+    const data = await storageModel.find({});
+    res.send({ data });
+  } catch (e) {
+    handleHttpError(res, "ERROR_GET_ALL_STORAGE");
+  }
 };
 const getItem = (req, res) => {};
 
 const createItem = async (req, res) => {
   try {
-    const { file, image } = req;
+    const { file } = req;
     console.log(file);
-    const result = await cloudinary.uploader.upload(image, {
+    const result = await cloudinary.uploader.upload(file, {
       folder: "storage",
       width: 300,
       crop: "scale",
     });
     const fileData = {
-      filename: result.filename,
-      url: `${PUBLIC_URL}/${result.filename}`,
+      fileName: file.fileName,
+      url: `${PUBLIC_URL}/${file.fileName}`,
     };
     const data = await storageModel.create(fileData);
+    console.log(result);
     res.send({ data });
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    handleHttpError(res, "ERROR_CREATE_STORAGE");
   }
 };
 const updateItems = (req, res) => {};
