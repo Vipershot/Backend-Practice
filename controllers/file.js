@@ -6,7 +6,6 @@ const getItems = async (req, res) => {
   try {
     const data = await filesModel.find({});
     res.send({ data });
-<<<<<<< HEAD
   } catch (error) {
     handleHttpError(res, "ERROR_GET_ITEMS");
   }
@@ -20,16 +19,10 @@ const getItem = async (req, res) => {
   } catch (error) {
     handleHttpError(res, "ERROR_GET_ITEM");
   }
-=======
-  } catch (e) {
-    handleHttpError(res, "ERROR_GET_ITEMS");
-  }
->>>>>>> 1100e048dc62da233b6c61993b3feaccf4b8979b
 };
 
 const createItem = async (req, res) => {
   try {
-<<<<<<< HEAD
     const body = matchedData(req);
     const data = await filesModel.create(body);
     res.send({ data });
@@ -55,15 +48,6 @@ const deleteItem = async (req, res) => {
   } catch (error) {
     handleHttpError(res, "ERROR_DELETE_ITEM");
   }
-=======
-    const { body } = req;
-    console.log(body);
-    const data = await filesModel.create(body);
-    res.send({ data });
-  } catch (e) {
-    handleHttpError(res, "ERROR_CREATE_ITEMS");
-  }
->>>>>>> 1100e048dc62da233b6c61993b3feaccf4b8979b
 };
 
 module.exports = { getItems, getItem, createItem, updateItem, deleteItem };
