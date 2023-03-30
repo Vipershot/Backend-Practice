@@ -10,8 +10,15 @@ const validatorCreateItem = [
 ];
 
 const validatorGetItem = [
+  check("id").exists().notEmpty().isMongoId(),
+  (req, res, next) => {
+    return validateResults(req, res, next);
+  },
+];
+
+const validatorGetItems = [
   check("id").exists().notEmpty(),
   check("mediaId").exists().notEmpty(),
 ];
 
-module.exports = { validatorCreateItem };
+module.exports = { validatorCreateItem, validatorGetItem };

@@ -6,7 +6,7 @@ const FileScheme = new mongoose.Schema(
       type: String,
     },
     mediaId: {
-      type: mongoose.Types.ObjectId
+      type: mongoose.Types.ObjectId,
     },
   },
   {
